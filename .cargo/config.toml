@@ -1,0 +1,14 @@
+# Using wsl2windows-runner and cross-compiling to windows until WSL2 & 
+# bevy GUI apps play nice [https://github.com/paul-hansen/wsl2windows-runner]
+
+[build]
+target = "x86_64-pc-windows-msvc"
+
+[target.x86_64-pc-windows-msvc]
+runner = "wsl2windows-runner"
+linker = "rust-lld"
+rustflags = [
+    "-Lnative=/home/aaron/.xwin/crt/lib/x86_64",
+    "-Lnative=/home/aaron/.xwin/sdk/lib/um/x86_64",
+    "-Lnative=/home/aaron/.xwin/sdk/lib/ucrt/x86_64",
+]
